@@ -34,7 +34,7 @@ The goal was simple:
 
 | Desktop | Mobile |
 |---|---|
-| Add Screenshot | Add Screenshot |
+| <img src=".\Assets\Hero-Preview-Desktop.png"> width="400" | <img src=".\Assets\Hero-Preview-Mobile.png"> width="400" |
 
 ---
 
@@ -101,5 +101,9 @@ Portfolio/
 │   ├── interactions.js
 │   ├── theme.js
 │   └── projects.js
+│
+├── Assets/
+│   ├── Hero-Preview-Desktop.png
+│   ├── Hero-Preview-Mobile.png
 │
 └── README.md
