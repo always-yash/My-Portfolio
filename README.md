@@ -1,6 +1,6 @@
 <div align="center">
 
-# Yash Choudhary — Developer Portfolio
+# Yash Choudhary - Developer Portfolio
 
 A modern, immersive, and interactive developer portfolio built to reflect not just projects, but the mindset behind them.
 
