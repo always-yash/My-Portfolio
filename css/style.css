@@ -1300,22 +1300,24 @@ body[data-theme="dark"] .theme-icon {
     border-radius: 1.25rem;
     background: var(--surface);
     box-shadow: var(--shadow);
+    margin: 1.2rem;
 }
 
 .modal-close {
     position: absolute;
-    top: -0.9rem;
-    right: -0.9rem;
+    top: 0.75rem;
+    right: 0.75rem;
     z-index: 10;
     display: grid;
     place-items: center;
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2.2rem;
+    height: 2.2rem;
     border: 1px solid var(--border);
     border-radius: 50%;
-    background: var(--surface);
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    backdrop-filter: blur(8px);
     color: var(--text);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     line-height: 1;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
@@ -1401,23 +1403,25 @@ body[data-theme="dark"] .theme-icon {
     display: grid;
     gap: 1.25rem;
     padding: clamp(1.25rem, 3vw, 2rem);
+    padding-right: calc(clamp(1.25rem, 3vw, 2rem) - 6px);
     overflow-y: auto;
     align-content: start;
     scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
+    scrollbar-color: var(--text-soft) transparent;
 }
 
 .modal-body::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
 }
 
 .modal-body::-webkit-scrollbar-track {
     background: transparent;
+    margin: 0.5rem 0;
 }
 
 .modal-body::-webkit-scrollbar-thumb {
     border-radius: 999px;
-    background: var(--border);
+    background: color-mix(in srgb, var(--text-soft) 35%, transparent);
 }
 
 .modal-body::-webkit-scrollbar-thumb:hover {
