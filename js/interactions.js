@@ -227,13 +227,11 @@
         document.body.style.overflow = "";
     }
 
-    document.querySelectorAll("[data-open-project]").forEach((button) => {
-        button.addEventListener("click", (event) => {
-            event.preventDefault();
-            const project = window.portfolioProjects?.[button.dataset.openProject];
-            if (!project || !modal) {
-                return;
-            }
+    document.querySelectorAll(".project-card[data-open-project]").forEach((card) => {
+        card.addEventListener("click", (event) => {
+            if (event.target.closest("a")) return;
+            const project = window.portfolioProjects?.[card.dataset.openProject];
+            if (!project || !modal) return;
 
             modalKicker.textContent = project.kicker;
             modalTitle.textContent = project.title;

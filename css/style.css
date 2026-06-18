@@ -13,6 +13,8 @@
     --pink: #D6C3C3;
     --shadow: 0 24px 80px rgba(20, 20, 20, 0.12);
     --font-main: "Greycliff CF", "Inter", sans-serif;
+    --max-width: 1180px;
+    --side-padding: calc((100vw - var(--max-width)) / 2);
 }
 
 body[data-theme="dark"] {
@@ -896,9 +898,14 @@ img {
     gap: 2rem;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 4rem max(2rem, calc((100vw - 1180px) / 2)) 6rem;
+    padding: 2rem max(2.5rem) 6rem;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    transition: gap 0.5s cubic-bezier(.16, 1, .3, 1);
+}
+
+.project-grid:has(.project-card:hover) {
+    gap: 3rem;
 }
 
 .project-card {
@@ -907,15 +914,21 @@ img {
     min-width: 250px;
     scroll-snap-align: start;
     flex-direction: column;
+    cursor: pointer;
     transition:
         transform 0.5s cubic-bezier(.16, 1, .3, 1),
         opacity 0.4s ease,
         background 0.4s ease,
-        box-shadow 0.4s ease;
+        box-shadow 0.4s ease,
+        margin 0.5s cubic-bezier(.16, 1, .3, 1),
+        gap 0.5s cubic-bezier(.16, 1, .3, 1);
 }
 
 .project-card:hover {
+    transform: scale(1.125);
     box-shadow: var(--shadow);
+    z-index: 3;
+    margin-inline: 0.5rem;
 }
 
 .works.is-filtered .edge-carousel-wrap {
@@ -927,23 +940,26 @@ img {
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    
+
     /* Ensure the grid itself doesn't have a max-width restriction */
     width: 100%;
-    max-width: none; 
-    
-    padding: 4rem max(2rem, 4rem) 6rem;
-    box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+    max-width: none;
+
+    padding: 2rem max(2.5rem) 6rem;
+    box-sizing: border-box;
+    /* Ensures padding doesn't cause overflow */
 }
 
 .works.is-filtered .project-card {
     flex: initial;
-    width: 100%;           
-    max-width: 100%;       
-    min-width: 0;          /* This overrides the base 250px min-width */
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    /* This overrides the base 250px min-width */
     scroll-snap-align: none;
-    height: 100%;          
-    display: flex;         /* Add this to enable full-height stretching */
+    height: 100%;
+    display: flex;
+    /* Add this to enable full-height stretching */
     flex-direction: column;
 }
 
@@ -1406,27 +1422,6 @@ body[data-theme="dark"] .theme-icon {
     top: 35%;
     width: 70%;
     height: 0.5rem;
-    background: var(--accent);
-}
-
-.gallery-thumbs {
-    display: flex;
-    gap: 0.5rem;
-    padding: 0.75rem;
-    background: var(--surface);
-}
-
-.thumb {
-    flex: 1;
-    height: 0.35rem;
-    border-radius: 999px;
-    background: var(--border);
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.thumb.active,
-.thumb:hover {
     background: var(--accent);
 }
 
