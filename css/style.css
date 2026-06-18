@@ -898,7 +898,7 @@ img {
     gap: 2rem;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 3rem max(2.5rem) 6rem;
+    padding: 4rem max(2.5rem) 7rem;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
 }
@@ -931,7 +931,7 @@ img {
 }
 
 .works.is-filtered .edge-carousel-wrap {
-    width: min(calc(100% - 2rem), 1180px);
+    width: min(calc(100vw - 2rem), 1180px);
     margin-inline: auto;
 }
 

@@ -191,14 +191,12 @@
     document.querySelectorAll("[data-carousel]").forEach((button) => {
         button.addEventListener("click", () => {
             const carousel = projectGrid;
-            const visibleCard = carousel?.querySelector(".project-card:not(.is-hidden)");
-            if (!carousel || !visibleCard || !projectLoopEnabled) {
-                return;
-            }
-
-            const direction = button.dataset.carousel === "next" ? 1 : -1;
-            const gap = parseFloat(getComputedStyle(carousel).gap) || 16;
+            if (!carousel) return;
+            const visibleCard = carousel.querySelector(".project-card:not(.is-hidden)");
+            if (!visibleCard) return;
+            const gap = parseFloat(getComputedStyle(carousel).gap) || 32;
             const step = visibleCard.getBoundingClientRect().width + gap;
+            const direction = button.dataset.carousel === "next" ? 1 : -1;
             carousel.scrollBy({ left: step * direction, behavior: "smooth" });
         });
     });
