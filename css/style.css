@@ -589,34 +589,15 @@ img {
     bottom: 1rem;
 }
 
-.scroll-cue {
-    position: absolute;
-    left: 50%;
-    bottom: 2rem;
-    z-index: 2;
-    transform: translateX(-50%);
-}
-
-.scroll-track {
-    width: 1.4rem;
-    height: 2.6rem;
-    border: 2px solid #1a1a1a;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.04);
-    display: flex;
-    justify-content: center;
-    padding-top: 0.4rem;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
 .scroll-dot {
-    width: 0.6rem;
-    height: 0.6rem;
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: #1a1a1a;
-    animation: scrollFall 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    will-change: transform, opacity;
+    background: var(--text);
+    animation: breath 4s infinite ease-in-out;
 }
 
 .chapter,
@@ -624,7 +605,7 @@ img {
 .contact {
     padding-top: clamp(6rem, 7.5vw, 9rem);
     padding-bottom: clamp(6rem, 6vw, 9rem);
-    padding-inline: 1.25rem;
+    padding-inline: 0rem;
 }
 
 .chapter {
@@ -816,7 +797,7 @@ img {
 }
 
 .skills-band {
-    margin-top: clamp(1rem, 2vw, 2rem);
+    margin-top: clamp(1rem, 2vw, 2rem) 0rem;
     padding: clamp(2rem, 2.4vw, 3rem) 0;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
@@ -902,10 +883,10 @@ img {
 
 .project-grid {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 0.1rem max(1rem, calc((100vw - 1180px) / 2)) 0.4rem;
+    padding: 4rem max(2rem, calc((100vw - 1180px) / 2)) 4rem;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
 }
