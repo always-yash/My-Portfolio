@@ -86,6 +86,10 @@
     .side-right {
         right: 0.75rem;
     }
+
+    .works.is-filtered .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 720px) {
@@ -124,6 +128,10 @@
     .floating-panel {
         min-width: 8.5rem;
         padding: 0.8rem;
+    }
+
+    .works.is-filtered .project-grid {
+        grid-template-columns: 1fr;
     }
 
     .panel-a {

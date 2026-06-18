@@ -924,7 +924,7 @@ img {
     z-index: 3;
 }
 
-.project-card:hover + .project-card {
+.project-card:hover+.project-card {
     margin-left: 1rem;
 }
 
@@ -1151,8 +1151,8 @@ img {
 }
 
 .contact-copy h2 {
-    max-width: 8.6ch;
-    font-size: clamp(2.6rem, 4.3vw, 4.65rem);
+    max-width: 9ch;
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
 }
 
 .contact-links {
