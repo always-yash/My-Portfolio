@@ -172,21 +172,18 @@
             document.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("active"));
             button.classList.add("active");
 
-            if (filter === "all") {
-                projectGrid?.projectLoopControls?.enable();
-            } else {
-                projectGrid?.projectLoopControls?.disable();
-            }
-
             document.querySelectorAll(".project-card").forEach((card) => {
+                const isClone = card.dataset.clone === "true";
+                if (isClone) {
+                    card.remove();
+                    return;
+                }
                 const show = filter === "all" || card.dataset.category === filter;
                 card.classList.toggle("is-hidden", !show);
             });
 
-            if (projectGrid && filter === "all") {
-                requestAnimationFrame(() => {
-                    projectGrid.scrollTo({ left: projectGrid.scrollWidth / 3, behavior: "smooth" });
-                });
+            if (filter === "all") {
+                enableProjectLoop();
             }
         });
     });
@@ -227,50 +224,46 @@
         document.body.style.overflow = "";
     }
 
-    document.querySelectorAll(".project-card[data-open-project]").forEach((card) => {
-        card.addEventListener("click", (event) => {
-            if (event.target.closest("a")) return;
-            const project = window.portfolioProjects?.[card.dataset.openProject];
-            if (!project || !modal) return;
+    projectGrid?.addEventListener("click", (event) => {
+        const card = event.target.closest(".project-card[data-open-project]");
+        if (!card || event.target.closest("a")) return;
+        const project = window.portfolioProjects?.[card.dataset.openProject];
+        if (!project || !modal) return;
 
-            modalKicker.textContent = project.kicker;
-            modalTitle.textContent = project.title;
-            modalRole.innerHTML = project.role;
-            modalDuration.textContent = project.duration;
-            modalChallenge.textContent = project.challenge;
-            modalProblem.textContent = project.problem;
-            modalSolution.textContent = project.solution;
-            modalReflection.textContent = project.reflection;
-            modalVisual.className = `modal-visual ${project.visualClass}`;
-            const modalImage = document.getElementById("modalImage");
-            if (modalImage) {
-                modalImage.src = project.image || "";
-                modalImage.alt = project.title;
-            }
-            modalGithub.href = project.github;
+        modalKicker.textContent = project.kicker;
+        modalTitle.textContent = project.title;
+        modalRole.innerHTML = project.role;
+        modalDuration.textContent = project.duration;
+        modalChallenge.textContent = project.challenge;
+        modalProblem.textContent = project.problem;
+        modalSolution.textContent = project.solution;
+        modalReflection.textContent = project.reflection;
+        modalVisual.className = `modal-visual ${project.visualClass}`;
+        const modalImage = document.getElementById("modalImage");
+        if (modalImage) {
+            modalImage.src = project.image || "";
+            modalImage.alt = project.title;
+        }
+        modalGithub.href = project.github;
 
-            modalSystem.innerHTML = project.system.map(([title, desc]) =>
-                `<div class="system-card"><span>${title}</span><p>${desc}</p></div>`
-            ).join("");
+        modalSystem.innerHTML = project.system.map(([title, desc]) =>
+            `<div class="system-card"><span>${title}</span><p>${desc}</p></div>`
+        ).join("");
 
-            modalThumbs.innerHTML = project.gallery.map((_, i) =>
-                `<div class="thumb ${i === 0 ? 'active' : ''}" data-thumb="${i}"></div>`
-            ).join("");
+        const order = window.projectOrder || [];
+        const currentIdx = order.indexOf(card.dataset.openProject);
+        const nextIdx = (currentIdx + 1) % order.length;
+        const nextKey = order[nextIdx];
+        const nextProject = window.portfolioProjects?.[nextKey];
+        if (nextProject && modalNext) {
+            modalNext.innerHTML = `<span>Next: ${nextProject.title}</span><span class="next-arrow" aria-hidden="true">&rarr;</span>`;
+            modalNext.dataset.nextProject = nextKey;
+        }
 
-            const order = window.projectOrder || [];
-            const currentIdx = order.indexOf(button.dataset.openProject);
-            const nextIdx = (currentIdx + 1) % order.length;
-            const nextKey = order[nextIdx];
-            const nextProject = window.portfolioProjects?.[nextKey];
-            if (nextProject) {
-                modalNext.textContent = `Next: ${nextProject.title}`;
-                modalNext.dataset.nextProject = nextKey;
-            }
-
-            modal.classList.add("is-open");
-            modal.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
-        });
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    });
     });
 
     modalNext?.addEventListener("click", (event) => {
