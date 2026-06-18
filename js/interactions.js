@@ -264,7 +264,6 @@
         modal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
     });
-    });
 
     modalNext?.addEventListener("click", (event) => {
         event.preventDefault();
