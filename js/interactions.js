@@ -244,6 +244,11 @@
             modalSolution.textContent = project.solution;
             modalReflection.textContent = project.reflection;
             modalVisual.className = `modal-visual ${project.visualClass}`;
+            const modalImage = document.getElementById("modalImage");
+            if (modalImage) {
+                modalImage.src = project.image || "";
+                modalImage.alt = project.title;
+            }
             modalGithub.href = project.github;
 
             modalSystem.innerHTML = project.system.map(([title, desc]) =>

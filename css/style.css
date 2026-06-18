@@ -901,35 +901,6 @@ img {
     scrollbar-width: none;
 }
 
-.works.is-filtered .edge-carousel-wrap {
-    width: min(calc(100% - 2rem), 1180px);
-    margin-inline: auto;
-}
-
-.works.is-filtered .project-grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    overflow: visible;
-    padding: 4rem max(2rem, calc((100vw - 1180px) / 2)) 6rem;
-    scroll-snap-type: none;
-    width: 100%;
-}
-
-.works.is-filtered .project-card {
-    flex: initial;
-    width: 100%;
-    scroll-snap-align: none;
-}
-
-.works.is-filtered .side-carousel-button {
-    display: none;
-}
-
-.project-grid::-webkit-scrollbar {
-    display: ruby;
-}
-
 .project-card {
     flex: 0 0 min(35vw, 26rem);
     overflow: hidden;
@@ -945,6 +916,43 @@ img {
 
 .project-card:hover {
     box-shadow: var(--shadow);
+}
+
+.works.is-filtered .edge-carousel-wrap {
+    width: min(calc(100% - 2rem), 1180px);
+    margin-inline: auto;
+}
+
+.works.is-filtered .project-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    
+    /* Ensure the grid itself doesn't have a max-width restriction */
+    width: 100%;
+    max-width: none; 
+    
+    padding: 4rem max(2rem, 4rem) 6rem;
+    box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+}
+
+.works.is-filtered .project-card {
+    flex: initial;
+    width: 100%;           
+    max-width: 100%;       
+    min-width: 0;          /* This overrides the base 250px min-width */
+    scroll-snap-align: none;
+    height: 100%;          
+    display: flex;         /* Add this to enable full-height stretching */
+    flex-direction: column;
+}
+
+.works.is-filtered .side-carousel-button {
+    display: none;
+}
+
+.project-grid::-webkit-scrollbar {
+    display: ruby;
 }
 
 .side-carousel-button {
@@ -1006,9 +1014,22 @@ img {
 
 .project-visual {
     position: relative;
-    min-height: 16rem;
+    min-height: 14.2rem;
     overflow: hidden;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--background);
+}
+
+.project-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(.16, 1, .3, 1);
+}
+
+.project-card:hover .project-visual img {
+    transform: scale(1.05);
 }
 
 .artisaan-visual {
@@ -1337,52 +1358,55 @@ body[data-theme="dark"] .theme-icon {
 }
 
 .modal-visual {
+    position: relative;
     min-height: 17.6rem;
+    overflow: hidden;
     background: var(--surface-raised);
 }
 
-.modal-visual.artisaan {
-    background:
-        radial-gradient(ellipse 65% 55% at 25% 35%, color-mix(in srgb, var(--accent-warm) 24%, transparent), transparent 55%),
-        radial-gradient(ellipse 55% 50% at 75% 65%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 55%),
-        var(--surface-raised);
+.modal-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.modal-visual.pravasa {
-    background:
-        radial-gradient(ellipse 60% 50% at 20% 30%, color-mix(in srgb, var(--accent-cool) 24%, transparent), transparent 55%),
-        radial-gradient(ellipse 55% 45% at 78% 70%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%),
-        var(--surface-raised);
+.artifact-window {
+    position: absolute;
+    left: 10%;
+    top: 15%;
+    width: 45%;
+    height: 55%;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--surface) 60%, transparent);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow);
+    pointer-events: none;
 }
 
-.modal-visual.intenttab {
-    background:
-        radial-gradient(ellipse 55% 50% at 70% 30%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
-        radial-gradient(ellipse 50% 45% at 28% 68%, color-mix(in srgb, var(--accent-cool) 18%, transparent), transparent 55%),
-        var(--surface-raised);
+.artifact-window::before,
+.artifact-window::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
 }
 
-.modal-visual.skytel {
-    background:
-        radial-gradient(ellipse 55% 45% at 50% 35%, color-mix(in srgb, var(--accent-cool) 24%, transparent), transparent 55%),
-        radial-gradient(ellipse 50% 50% at 22% 72%, color-mix(in srgb, var(--sage) 22%, transparent), transparent 55%),
-        var(--surface-raised);
+.artifact-window::before {
+    left: 10%;
+    top: 20%;
+    width: 50%;
+    height: 0.5rem;
+    background: var(--accent-warm);
 }
 
-.modal-visual.fleeca {
-    background:
-        radial-gradient(ellipse 55% 50% at 35% 32%, color-mix(in srgb, var(--accent-warm) 22%, transparent), transparent 55%),
-        radial-gradient(ellipse 50% 45% at 68% 65%, color-mix(in srgb, var(--accent-cool) 20%, transparent), transparent 55%),
-        var(--surface-raised);
-}
-        var(--surface-raised);
-}
-
-.modal-metrics span {
-    display: block;
-    margin-top: 0.25rem;
-    color: var(--text-soft);
-    font-size: 0.76rem;
+.artifact-window::after {
+    left: 10%;
+    top: 35%;
+    width: 70%;
+    height: 0.5rem;
+    background: var(--accent);
 }
 
 .gallery-thumbs {

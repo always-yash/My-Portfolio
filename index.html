@@ -237,9 +237,8 @@
                     </div>
                     <div class="filter-group" aria-label="Project filters">
                         <button class="filter-button active" type="button" data-filter="all">All</button>
-                        <button class="filter-button" type="button" data-filter="culture">Culture</button>
-                        <button class="filter-button" type="button" data-filter="travel">Travel</button>
-                        <button class="filter-button" type="button" data-filter="system">System</button>
+                        <button class="filter-button" type="button" data-filter="Core">Core</button>
+                        <button class="filter-button" type="button" data-filter="Sandbox">Sandbox</button>
                     </div>
                 </div>
             </div>
@@ -250,14 +249,14 @@
                 <button class="side-carousel-button side-right" type="button" data-carousel="next"
                     aria-label="Next project"><b>&gt;</b></button>
                 <div class="project-grid">
-                    <article class="project-card fade-up" data-project="artisaan" data-category="culture"
-                        data-tilt-card>
+
+                    <article class="project-card fade-up" data-project="artisaan" data-category="Sandbox" data-tilt-card>
                         <div class="project-visual artisaan-visual" aria-hidden="true">
-                            <div class="metric-strip"><span>Nodes</span><strong>48</strong></div>
+                            <img src="assets/artisaan-thumbnail.png" alt="Artisaan" loading="lazy">
                         </div>
                         <div class="project-body">
                             <div>
-                                <span class="project-kicker">Culture system</span>
+                                <span class="project-kicker">Core system</span>
                                 <h3>Artisaan</h3>
                             </div>
                             <p>Bridging the digital divide for India's 200+ million artisans through AI-powered marketplace solutions that preserve cultural heritage while enabling global reach.</p>
@@ -266,14 +265,14 @@
                         </div>
                     </article>
 
-                    <article class="project-card fade-up" data-project="pravasa" data-category="travel" data-tilt-card>
+                    <article class="project-card fade-up" data-project="pravasa" data-category="Sandbox" data-tilt-card>
                         <div class="project-visual pravasa-visual" aria-hidden="true">
-                            <div class="metric-strip"><span>Routes</span><strong>14</strong></div>
+                            <img src="assets/pravasa-keralam-thumbnail.png" alt="Pravasa" loading="lazy">
                         </div>
                         <div class="project-body">
                             <div>
                                 <span class="project-kicker">Travel interface</span>
-                                <h3>Pravasa</h3>
+                                <h3>Pravasa keralam.</h3>
                             </div>
                             <p>An interactive travel guide to Keralam built with fluid navigation, discovery systems and modern visual storytelling for immersive trip planning.</p>
                             <a class="text-button project-open ripple" href="#"
@@ -281,10 +280,9 @@
                         </div>
                     </article>
 
-                    <article class="project-card fade-up" data-project="intenttab" data-category="system"
-                        data-tilt-card>
+                    <article class="project-card fade-up" data-project="intenttab" data-category="Sandbox" data-tilt-card>
                         <div class="project-visual intenttab-visual" aria-hidden="true">
-                            <div class="metric-strip"><span>Focus</span><strong>100%</strong></div>
+                            <img src="assets/intent-tab-thumbnail.png" alt="Intent-tab" loading="lazy">
                         </div>
                         <div class="project-body">
                             <div>
@@ -297,9 +295,9 @@
                         </div>
                     </article>
 
-                    <article class="project-card fade-up" data-project="skytel" data-category="system" data-tilt-card>
+                    <article class="project-card fade-up" data-project="skytel" data-category="Core" data-tilt-card>
                         <div class="project-visual skytel-visual" aria-hidden="true">
-                            <div class="metric-strip"><span>Uptime</span><strong>99.9%</strong></div>
+                            <img src="assets/skytel-solutions-thumbnail.png" alt="SkyTel Solutions" loading="lazy">
                         </div>
                         <div class="project-body">
                             <div>
@@ -312,14 +310,14 @@
                         </div>
                     </article>
 
-                    <article class="project-card fade-up" data-project="fleeca" data-category="system" data-tilt-card>
+                    <article class="project-card fade-up" data-project="fleeca" data-category="Core" data-tilt-card>
                         <div class="project-visual fleeca-visual" aria-hidden="true">
-                            <div class="metric-strip"><span>Fleet</span><strong>Live</strong></div>
+                            <img src="assets/fleeca-thumbnail.png" alt="Fleeca TPMS" loading="lazy">
                         </div>
                         <div class="project-body">
                             <div>
                                 <span class="project-kicker">Fleet management</span>
-                                <h3>Fleeca TPMS</h3>
+                                <h3>Fleeca Designs</h3>
                             </div>
                             <p>A Tyre Pressure Monitoring System dashboard for Fleeca — real-time fleet tracking, pressure analytics and predictive maintenance for vehicle fleets.</p>
                             <a class="text-button project-open ripple" href="#"
@@ -416,7 +414,10 @@
             <button class="modal-close" type="button" aria-label="Close case study" data-close-modal>&times;</button>
 
             <div class="modal-gallery" id="modalGallery" aria-hidden="true">
-                <div class="modal-visual" id="modalVisual"></div>
+                <div class="modal-visual" id="modalVisual">
+                    <img src="" alt="" id="modalImage">
+                    <div class="artifact-window"></div>
+                </div>
                 <div class="gallery-thumbs" id="modalThumbs"></div>
             </div>
 
