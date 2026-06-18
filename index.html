@@ -261,8 +261,8 @@
                                 <h3>Artisaan</h3>
                             </div>
                             <p>Bridging the digital divide for India's 200+ million artisans through AI-powered marketplace solutions that preserve cultural heritage while enabling global reach.</p>
-                            <a class="text-button project-open ripple" href="https://github.com/always-yash/Artisaan"
-                                target="_blank" rel="noreferrer">View on GitHub</a>
+                            <a class="text-button project-open ripple" href="#"
+                                data-open-project="artisaan">View Case Study</a>
                         </div>
                     </article>
 
@@ -276,9 +276,8 @@
                                 <h3>Pravasa</h3>
                             </div>
                             <p>An interactive travel guide to Keralam built with fluid navigation, discovery systems and modern visual storytelling for immersive trip planning.</p>
-                            <a class="text-button project-open ripple"
-                                href="https://github.com/always-yash/pravasa-keralam-map" target="_blank"
-                                rel="noreferrer">View on GitHub</a>
+                            <a class="text-button project-open ripple" href="#"
+                                data-open-project="pravasa">View Case Study</a>
                         </div>
                     </article>
 
@@ -293,8 +292,8 @@
                                 <h3>Intent-tab</h3>
                             </div>
                             <p>A purpose-driven new tab browser extension that replaces your default tab with intentional focus tools, productivity widgets and mindful browsing.</p>
-                            <a class="text-button project-open ripple" href="https://github.com/always-yash/Intent-tab"
-                                target="_blank" rel="noreferrer">View on GitHub</a>
+                            <a class="text-button project-open ripple" href="#"
+                                data-open-project="intenttab">View Case Study</a>
                         </div>
                     </article>
 
@@ -308,9 +307,8 @@
                                 <h3>SkyTel Solutions</h3>
                             </div>
                             <p>A full-stack telecom solutions platform powering connectivity services with scalable infrastructure, customer management and service delivery systems.</p>
-                            <a class="text-button project-open ripple"
-                                href="https://github.com/always-yash/SkyTel-Solutions" target="_blank"
-                                rel="noreferrer">View on GitHub</a>
+                            <a class="text-button project-open ripple" href="#"
+                                data-open-project="skytel">View Case Study</a>
                         </div>
                     </article>
 
@@ -324,9 +322,8 @@
                                 <h3>Fleeca TPMS</h3>
                             </div>
                             <p>A Tyre Pressure Monitoring System dashboard for Fleeca — real-time fleet tracking, pressure analytics and predictive maintenance for vehicle fleets.</p>
-                            <a class="text-button project-open ripple"
-                                href="https://github.com/always-yash/Fleeca-TPMS-Dashboard" target="_blank"
-                                rel="noreferrer">View on GitHub</a>
+                            <a class="text-button project-open ripple" href="#"
+                                data-open-project="fleeca">View Case Study</a>
                         </div>
                     </article>
                 </div>
@@ -416,13 +413,56 @@
     <div class="project-modal" id="projectModal" aria-hidden="true">
         <div class="modal-backdrop" data-close-modal></div>
         <article class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <button class="modal-close" type="button" aria-label="Close project preview" data-close-modal>x</button>
-            <div class="modal-visual" id="modalVisual" aria-hidden="true"></div>
-            <div class="modal-content">
-                <span id="modalKicker"></span>
-                <h3 id="modalTitle"></h3>
-                <p id="modalDescription"></p>
-                <div class="modal-metrics" id="modalMetrics"></div>
+            <button class="modal-close" type="button" aria-label="Close case study" data-close-modal>&times;</button>
+
+            <div class="modal-gallery" id="modalGallery" aria-hidden="true">
+                <div class="modal-visual" id="modalVisual"></div>
+                <div class="gallery-thumbs" id="modalThumbs"></div>
+            </div>
+
+            <div class="modal-body">
+                <header class="case-hero">
+                    <span class="case-kicker" id="modalKicker"></span>
+                    <h2 class="case-title" id="modalTitle"></h2>
+                    <div class="case-meta">
+                        <span id="modalRole"></span>
+                        <span class="meta-dot"></span>
+                        <span id="modalDuration"></span>
+                    </div>
+                    <p class="case-challenge" id="modalChallenge"></p>
+                </header>
+
+                <div class="case-context">
+                    <div class="context-col">
+                        <span class="context-label">Problem</span>
+                        <p id="modalProblem"></p>
+                    </div>
+                    <div class="context-col">
+                        <span class="context-label">Solution</span>
+                        <p id="modalSolution"></p>
+                    </div>
+                </div>
+
+                <div class="case-system">
+                    <span class="section-label">System Logic</span>
+                    <div class="system-grid" id="modalSystem"></div>
+                </div>
+
+                <div class="case-reflection">
+                    <span class="section-label">Reflection</span>
+                    <p id="modalReflection"></p>
+                </div>
+
+                <footer class="case-footer">
+                    <a class="button button-secondary ripple" id="modalGithub" href="#" target="_blank" rel="noreferrer">
+                        <span>View on GitHub</span>
+                        <span class="button-icon" aria-hidden="true">^</span>
+                    </a>
+                    <a class="text-button case-next" id="modalNext" href="#">
+                        <span>Next Project</span>
+                        <span class="next-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </footer>
             </div>
         </article>
     </div>

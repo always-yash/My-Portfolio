@@ -208,10 +208,18 @@
 
     const modal = document.getElementById("projectModal");
     const modalVisual = document.getElementById("modalVisual");
+    const modalThumbs = document.getElementById("modalThumbs");
     const modalKicker = document.getElementById("modalKicker");
     const modalTitle = document.getElementById("modalTitle");
-    const modalDescription = document.getElementById("modalDescription");
-    const modalMetrics = document.getElementById("modalMetrics");
+    const modalRole = document.getElementById("modalRole");
+    const modalDuration = document.getElementById("modalDuration");
+    const modalChallenge = document.getElementById("modalChallenge");
+    const modalProblem = document.getElementById("modalProblem");
+    const modalSolution = document.getElementById("modalSolution");
+    const modalSystem = document.getElementById("modalSystem");
+    const modalReflection = document.getElementById("modalReflection");
+    const modalGithub = document.getElementById("modalGithub");
+    const modalNext = document.getElementById("modalNext");
 
     function closeModal() {
         modal?.classList.remove("is-open");
@@ -220,7 +228,8 @@
     }
 
     document.querySelectorAll("[data-open-project]").forEach((button) => {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
             const project = window.portfolioProjects?.[button.dataset.openProject];
             if (!project || !modal) {
                 return;
@@ -228,13 +237,46 @@
 
             modalKicker.textContent = project.kicker;
             modalTitle.textContent = project.title;
-            modalDescription.textContent = project.description;
+            modalRole.innerHTML = project.role;
+            modalDuration.textContent = project.duration;
+            modalChallenge.textContent = project.challenge;
+            modalProblem.textContent = project.problem;
+            modalSolution.textContent = project.solution;
+            modalReflection.textContent = project.reflection;
             modalVisual.className = `modal-visual ${project.visualClass}`;
-            modalMetrics.innerHTML = project.metrics.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join("");
+            modalGithub.href = project.github;
+
+            modalSystem.innerHTML = project.system.map(([title, desc]) =>
+                `<div class="system-card"><span>${title}</span><p>${desc}</p></div>`
+            ).join("");
+
+            modalThumbs.innerHTML = project.gallery.map((_, i) =>
+                `<div class="thumb ${i === 0 ? 'active' : ''}" data-thumb="${i}"></div>`
+            ).join("");
+
+            const order = window.projectOrder || [];
+            const currentIdx = order.indexOf(button.dataset.openProject);
+            const nextIdx = (currentIdx + 1) % order.length;
+            const nextKey = order[nextIdx];
+            const nextProject = window.portfolioProjects?.[nextKey];
+            if (nextProject) {
+                modalNext.textContent = `Next: ${nextProject.title}`;
+                modalNext.dataset.nextProject = nextKey;
+            }
+
             modal.classList.add("is-open");
             modal.setAttribute("aria-hidden", "false");
             document.body.style.overflow = "hidden";
         });
+    });
+
+    modalNext?.addEventListener("click", (event) => {
+        event.preventDefault();
+        const nextKey = modalNext.dataset.nextProject;
+        if (nextKey) {
+            const btn = document.querySelector(`[data-open-project="${nextKey}"]`);
+            btn?.click();
+        }
     });
 
     document.querySelectorAll("[data-close-modal]").forEach((button) => {
