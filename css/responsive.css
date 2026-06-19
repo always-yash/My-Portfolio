@@ -100,6 +100,14 @@
         margin-top: 0;
     }
 
+    .side-left {
+        left: 0.75rem;
+    }
+
+    .side-right {
+        right: 0.75rem;
+    }
+
     .stack-grid,
     .skills-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -209,6 +217,14 @@
     .side-carousel-button {
         width: 2.75rem;
         height: 2.75rem;
+    }
+
+    .side-left {
+        left: 0.5rem;
+    }
+
+    .side-right {
+        right: 0.5rem;
     }
 
     .project-visual {
@@ -323,6 +339,19 @@
     .project-card {
         flex-basis: 88vw;
         min-width: 220px;
+    }
+
+    .side-carousel-button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .side-left {
+        left: 0.35rem;
+    }
+
+    .side-right {
+        right: 0.35rem;
     }
 
     .project-visual {

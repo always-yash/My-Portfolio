@@ -882,15 +882,49 @@ img {
 
 .edge-carousel-wrap {
     position: relative;
-    margin-inline: calc((100vw - min(calc(100vw - 3rem), 1180px)) / -1.75);
+}
+
+.side-carousel-button {
+    position: absolute;
+    top: 50%;
+    z-index: 30;
+    display: grid;
+    width: 3.5rem;
+    height: 3.5rem;
+    place-items: center;
+    border: 1px solid var(--border-strong);
+    border-radius: 50%;
+    background: var(--surface);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: var(--text);
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition:
+        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.side-carousel-button:hover {
+    background: var(--text);
+    color: var(--bg);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.side-carousel-button:active {
+    transform: translateY(-50%) scale(0.95);
 }
 
 .side-left {
-    left: max(1rem, calc((100vw - 1180px) / 2 + 1rem));
+    left: 1.5rem;
 }
 
 .side-right {
-    right: max(1rem, calc((100vw - 1180px) / 2 + 1rem));
+    right: 1.5rem;
 }
 
 .project-grid {
@@ -950,7 +984,7 @@ img {
 }
 
 .works.is-filtered .side-carousel-button {
-    display:inline;
+    display: none;
 }
 
 .project-grid::-webkit-scrollbar {
@@ -960,25 +994,23 @@ img {
 .side-carousel-button {
     position: absolute;
     top: 50%;
-    z-index: 5;
+    z-index: 20;
     display: grid;
     width: 3.3rem;
     height: 3.3rem;
     place-items: center;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-strong);
     border-radius: 50%;
-    background: color-mix(in srgb, var(--surface) 60%, transparent);
-    backdrop-filter: blur(20px) saturate(1.8);
-    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+    background: var(--surface);
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.12);
     color: var(--text);
-    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
     cursor: pointer;
     transform: translateY(-50%);
     transition:
         transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
         background 0.3s ease,
         border-color 0.3s ease,
-        opacity 0.4s ease;
+        box-shadow 0.3s ease;
     pointer-events: auto;
 }
 
@@ -987,21 +1019,11 @@ img {
     color: var(--bg);
     border-color: var(--text);
     transform: translateY(-50%) scale(1.1);
-    /* Slightly more prominent pop */
-    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.2);
 }
 
 .side-carousel-button:active {
     transform: translateY(-50%) scale(0.95);
-    /* Physical press effect */
-}
-
-.side-left {
-    left: max(0.75rem, calc((100vw - 1180px) / 2 - 4.2rem));
-}
-
-.side-right {
-    right: max(2.75rem, calc((100vw - 1180px) / 2 - 4.2rem));
 }
 
 .project-card.is-hidden {
