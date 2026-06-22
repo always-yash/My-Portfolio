@@ -939,8 +939,8 @@ img {
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    padding-top: 2rem;
-    padding-bottom: 4rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
 }
 
 .works.is-filtered .swiper-nav {
@@ -949,7 +949,8 @@ img {
 
 .works.is-filtered .project-swiper {
     width: min(calc(100% - 2rem), 1180px);
-    margin: 2rem auto;
+    margin: 2rem 5rem;
+    padding: 5rem;
 }
 
 .works.is-filtered .swiper-wrapper {
