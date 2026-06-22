@@ -935,65 +935,79 @@ img {
 }
 
 .side-carousel-button {
-    position: absolute;
-    top: 50%;
-    z-index: 30;
-    display: grid;
-    width: 3.5rem;
-    height: 3.5rem;
-    place-items: center;
-    border: 1px solid color-mix(in srgb, var(--border-strong) 58%, transparent);
+    /* Enforce layout parameters and color scheme */
+    top: 64% !important;
+    color: var(--text) !important;
+    border: 3px solid var(--border-strong) !important;
     border-radius: 50%;
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.26)),
-        color-mix(in srgb, var(--surface) 62%, transparent);
-    box-shadow:
-        0 18px 48px rgba(0, 0, 0, 0.09),
-        inset 0 1px 0 rgba(255, 255, 255, 0.62),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px) saturate(1.45);
-    color: var(--text);
-    font-size: 1.25rem;
-    font-weight: 700;
-    cursor: pointer;
-    transform: translateY(-50%);
-    transition:
-        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-        background 0.3s ease,
-        color 0.3s ease,
-        box-shadow 0.3s ease;
+    background: color-mix(in srgb, var(--surface) 90%, transparent) !important;
+    backdrop-filter: blur(12px);
+    
+    /* Perfect minimalist proportions */
+    width: 3.2rem !important;
+    height: 3.2rem !important;
+    
+    /* Grid centering wrapper */
+    display: grid !important;
+    place-items: center !important;
+    overflow: hidden !important;
+    
+    /* Clean vertical placement offset */
+    transform: translateY(-50%) !important;
+    transition: 
+        background 0.3s ease, 
+        color 0.3s ease, 
+        border-color 0.3s ease, 
+        transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.side-carousel-button:hover {
-    background:
-        linear-gradient(135deg, var(--text), var(--text));
-    color: var(--bg);
-    box-shadow:
-        0 24px 58px rgba(0, 0, 0, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    transform: translateY(-50%) scale(1.08);
-}
-
-.side-carousel-button:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
+/* Explicitly target and downscale the pseudo arrow character */
 .side-carousel-button::after {
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-size: 0.9rem !important; /* Forces the text arrow to shrink inside the box boundaries */
+    font-weight: 999 !important;  /* Elegant thin stroke profile */
+    line-height: 1 !important;    /* Removes invisible default padding heights */
+    display: block !important;
 }
 
-.side-left::after {
-    content: "←";
+/* Fluid Hover Interaction Layer */
+.side-carousel-button:hover:not(.swiper-button-disabled) {
+    background: var(--text) !important;
+    color: var(--bg) !important;
+    border-color: var(--text) !important;
+    transform: translateY(-50%) scale(1.05) !important;
 }
 
-.side-right::after {
-    content: "→";
+/* Tactile Active Pressed State */
+.side-carousel-button:active:not(.swiper-button-disabled) {
+    transform: translateY(-50%) scale(0.95) !important;
 }
 
+/* Soft Fade Out for Disabled Edge Limits */
 .side-carousel-button.swiper-button-disabled {
-    opacity: 0.25;
-    pointer-events: none;
+    opacity: 0.2 !important;
+    cursor: not-allowed;
+}
+
+/* Layout Padding Adjustments for Clean Positioning Contexts */
+.side-left {
+    left: 2rem !important;
+}
+
+.side-right {
+    right: 2rem !important;
+}
+
+/* Scale down gracefully on mobile screens */
+@media (max-width: 720px) {
+    .side-carousel-button {
+        width: 2.75rem !important;
+        height: 2.75rem !important;
+    }
+    .side-carousel-button::after {
+        font-size: 0.8rem !important;
+    }
+    .side-left { left: 0.75rem !important; }
+    .side-right { right: 0.75rem !important; }
 }
 
 body[data-theme="dark"] .side-carousel-button {

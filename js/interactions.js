@@ -47,6 +47,11 @@
                     },
                 },
             },
+            autoplay: {
+                delay: 3000,                   // 3000 milliseconds = 3 seconds
+                disableOnInteraction: false,   // Keeps autoplay running even after a user manually swipes
+                pauseOnMouseEnter: true,       // Optional: Pauses the timer when someone hovers over a project card to read it
+            },
         });
         return window.projectSwiper;
     }
