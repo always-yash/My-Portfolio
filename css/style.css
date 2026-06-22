@@ -610,9 +610,7 @@ img {
 .chapter,
 .works,
 .contact {
-    padding-top: clamp(6rem, 7.5vw, 9rem);
-    padding-bottom: clamp(6rem, 6vw, 9rem);
-    padding-inline: 0rem;
+    padding: 7.5rem 1.25rem 6rem;
 }
 
 .chapter {
@@ -640,7 +638,7 @@ img {
 .two-column {
     display: grid;
     grid-template-columns: minmax(15rem, 0.62fr) minmax(0, 1fr);
-    gap: clamp(2rem, 7vw, 6rem);
+    gap: clamp(2rem, 4.5vw, 6rem);
 }
 
 .chapter-marker {
@@ -666,7 +664,7 @@ img {
     letter-spacing: -0.04em;
 }
 
-.chapter-content p:not(.lead) {
+.chapter-content{
     max-width: 42rem;
     color: var(--text-soft);
     font-size: 1rem;
@@ -759,7 +757,7 @@ img {
 }
 
 .evidence-strip {
-    padding: clamp(2rem, 2.5vw, 3rem);
+    padding: clamp(rem, 1vw, 3rem);
     margin: clamp(3.5rem, 4vw, 5rem) 1.25rem;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -770,6 +768,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: clamp(1rem, 1.5vw, 2rem);
     gap: clamp(1.5rem, 5vw, 4rem);
     flex-wrap: wrap;
 }
