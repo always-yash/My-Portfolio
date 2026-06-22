@@ -7,7 +7,7 @@
     const projectGrid = document.querySelector(".project-grid");
     const worksSection = document.querySelector(".works");
 
-    const projectSwiper = new Swiper(".project-swiper", {
+    let projectSwiper = new Swiper(".project-swiper", {
         slidesPerView: 1,
         spaceBetween: 24,
         speed: 700,
@@ -46,22 +46,53 @@
         },
     });
 
+    function initSwiper() {
+        if (projectSwiper) {
+            projectSwiper.destroy(true, true);
+        }
+        return new Swiper(".project-swiper", {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            speed: 700,
+            loop: true,
+            loopAdditionalSlides: 2,
+            effect: "slide",
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 32,
+                },
+            },
+        });
+    }
+
     document.querySelectorAll(".filter-button").forEach((button) => {
         button.addEventListener("click", () => {
             const filter = button.dataset.filter;
             document.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("active"));
             button.classList.add("active");
 
-            const slides = projectSwiper.slides;
-            slides.forEach((slide) => {
+            const allSlides = document.querySelectorAll(".project-swiper .swiper-slide");
+            allSlides.forEach((slide) => {
                 const category = slide.dataset.category;
-                const match = filter === "all" || category === filter;
-                slide.style.display = match ? "" : "none";
+                slide.style.display = filter === "all" || category === filter ? "" : "none";
             });
 
-            projectSwiper.update();
-            projectSwiper.slideTo(0);
+            initSwiper();
         });
+    });
     });
 
     function scrollToSection(id) {
