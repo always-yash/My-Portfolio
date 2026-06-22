@@ -59,13 +59,28 @@
             document.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("active"));
             button.classList.add("active");
 
-            const allSlides = document.querySelectorAll(".project-swiper .swiper-slide");
-            allSlides.forEach((slide) => {
-                const category = slide.dataset.category;
-                slide.style.display = filter === "all" || category === filter ? "" : "none";
-            });
-
-            initSwiper();
+            if (filter === "all") {
+                worksSection.classList.remove("is-filtered");
+                document.querySelectorAll(".project-swiper .swiper-slide").forEach((slide) => {
+                    slide.style.display = "";
+                });
+                initSwiper();
+            } else {
+                worksSection.classList.add("is-filtered");
+                if (window.projectSwiper && window.projectSwiper.destroy) {
+                    window.projectSwiper.destroy(true, true);
+                    window.projectSwiper = null;
+                }
+                document.querySelectorAll(".project-swiper .swiper-slide").forEach((slide) => {
+                    const category = slide.dataset.category;
+                    const isDup = slide.classList.contains("dup");
+                    if (isDup || (category !== filter)) {
+                        slide.style.display = "none";
+                    } else {
+                        slide.style.display = "";
+                    }
+                });
+            }
         });
     });
 
