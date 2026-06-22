@@ -17,10 +17,9 @@
         if (!siteNav) return;
         const currentScrollY = window.scrollY;
         const scrollingDown = currentScrollY > lastScrollY;
-        const pastHero = currentScrollY > window.innerHeight * 0.5;
         const isMenuOpen = document.body.classList.contains("menu-open");
 
-        if (scrollingDown && pastHero && !navHidden && !isMenuOpen) {
+        if (scrollingDown && currentScrollY > 60 && !navHidden && !isMenuOpen) {
             siteNav.classList.add("is-hidden");
             navHidden = true;
         } else if (!scrollingDown && navHidden) {
@@ -28,10 +27,10 @@
             navHidden = false;
         }
 
-        if (scrollCue && !scrollCueHidden && currentScrollY > 100) {
+        if (scrollCue && !scrollCueHidden && currentScrollY > 60) {
             scrollCue.classList.add("is-hidden");
             scrollCueHidden = true;
-        } else if (scrollCue && scrollCueHidden && currentScrollY <= 100) {
+        } else if (scrollCue && scrollCueHidden && currentScrollY <= 60) {
             scrollCue.classList.remove("is-hidden");
             scrollCueHidden = false;
         }
