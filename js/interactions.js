@@ -8,12 +8,17 @@
     const worksSection = document.querySelector(".works");
 
     let projectSwiper = new Swiper(".project-swiper", {
-        slidesPerView: 1,
-        spaceBetween: 24,
-        speed: 700,
+        effect: "cards",
+        cardsEffect: {
+            perSlideOffset: 12,
+            perSlideRotate: 2,
+            rotate: true,
+            slideShadows: true,
+        },
+        speed: 600,
         loop: true,
-        loopAdditionalSlides: 2,
-        effect: "slide",
+        loopAdditionalSlides: 3,
+        grabCursor: true,
         navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
@@ -24,23 +29,26 @@
         },
         breakpoints: {
             640: {
-                slidesPerView: 2,
-                spaceBetween: 24,
+                cardsEffect: {
+                    perSlideOffset: 16,
+                    perSlideRotate: 3,
+                    rotate: true,
+                    slideShadows: true,
+                },
             },
             1024: {
-                slidesPerView: 3,
-                spaceBetween: 32,
+                cardsEffect: {
+                    perSlideOffset: 20,
+                    perSlideRotate: 4,
+                    rotate: true,
+                    slideShadows: true,
+                },
             },
         },
         on: {
             init: function () {
                 this.slides.forEach((slide, idx) => {
-                    slide.style.transitionDelay = `${idx * 80}ms`;
-                });
-            },
-            slideChange: function () {
-                this.slides.forEach((slide) => {
-                    slide.style.transitionDelay = "0ms";
+                    slide.style.transitionDelay = `${idx * 60}ms`;
                 });
             },
         },
@@ -51,12 +59,17 @@
             projectSwiper.destroy(true, true);
         }
         return new Swiper(".project-swiper", {
-            slidesPerView: 1,
-            spaceBetween: 24,
-            speed: 700,
+            effect: "cards",
+            cardsEffect: {
+                perSlideOffset: 12,
+                perSlideRotate: 2,
+                rotate: true,
+                slideShadows: true,
+            },
+            speed: 600,
             loop: true,
-            loopAdditionalSlides: 2,
-            effect: "slide",
+            loopAdditionalSlides: 3,
+            grabCursor: true,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
@@ -67,12 +80,20 @@
             },
             breakpoints: {
                 640: {
-                    slidesPerView: 2,
-                    spaceBetween: 24,
+                    cardsEffect: {
+                        perSlideOffset: 16,
+                        perSlideRotate: 3,
+                        rotate: true,
+                        slideShadows: true,
+                    },
                 },
                 1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 32,
+                    cardsEffect: {
+                        perSlideOffset: 20,
+                        perSlideRotate: 4,
+                        rotate: true,
+                        slideShadows: true,
+                    },
                 },
             },
         });
