@@ -900,7 +900,7 @@ img {
 .project-swiper {
     width: min(calc(100% - 2rem), 1180px);
     margin: 6rem auto;
-    padding: 2rem 0 6rem;
+    padding: 2rem 0;
     overflow: visible;
     position: relative;
 }
