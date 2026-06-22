@@ -6,7 +6,40 @@
     const cursorGlow = document.querySelector(".cursor-glow");
     const projectGrid = document.querySelector(".project-grid");
     const worksSection = document.querySelector(".works");
+    const siteNav = document.querySelector(".site-nav");
+    const scrollCue = document.querySelector(".scroll-cue");
     let projectLoopEnabled = false;
+    let lastScrollY = window.scrollY;
+    let navHidden = false;
+    let scrollCueHidden = false;
+
+    function handleNavScroll() {
+        if (!siteNav) return;
+        const currentScrollY = window.scrollY;
+        const scrollingDown = currentScrollY > lastScrollY;
+        const pastHero = currentScrollY > window.innerHeight * 0.5;
+        const isMenuOpen = document.body.classList.contains("menu-open");
+
+        if (scrollingDown && pastHero && !navHidden && !isMenuOpen) {
+            siteNav.classList.add("is-hidden");
+            navHidden = true;
+        } else if (!scrollingDown && navHidden) {
+            siteNav.classList.remove("is-hidden");
+            navHidden = false;
+        }
+
+        if (scrollCue && !scrollCueHidden && currentScrollY > 100) {
+            scrollCue.classList.add("is-hidden");
+            scrollCueHidden = true;
+        } else if (scrollCue && scrollCueHidden && currentScrollY <= 100) {
+            scrollCue.classList.remove("is-hidden");
+            scrollCueHidden = false;
+        }
+
+        lastScrollY = currentScrollY;
+    }
+
+    window.addEventListener("scroll", handleNavScroll, { passive: true });
 
     if (projectGrid) {
         const originalCards = Array.from(projectGrid.children);
