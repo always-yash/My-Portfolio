@@ -196,13 +196,6 @@
         min-height: 13rem;
     }
 
-    .swiper-button-prev,
-    .swiper-button-next {
-        flex: 0 0 2.75rem;
-        width: 2.75rem;
-        height: 2.75rem;
-    }
-
     .contact {
         min-height: auto;
         padding-top: 4.8rem;
@@ -310,13 +303,6 @@
 
     .project-visual {
         min-height: 11rem;
-    }
-
-    .swiper-button-prev,
-    .swiper-button-next {
-        flex: 0 0 2.5rem;
-        width: 2.5rem;
-        height: 2.5rem;
     }
 
     .project-body {
